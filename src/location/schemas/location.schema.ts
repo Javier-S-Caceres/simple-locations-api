@@ -17,8 +17,10 @@ export class Location {
   @Prop({ required: true })
   address: string
 
+  // @Prop({ required: true })
+  // coordinates: Coordinate
   @Prop({ required: true })
-  coordinates: Coordinate
+  coordinates: [lat: number, lng: number]
 
   createdAt: Date
 
