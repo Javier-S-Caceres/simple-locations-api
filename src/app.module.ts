@@ -3,11 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LocationModule } from './location/location.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     LocationModule, 
-    MongooseModule.forRoot('mongodb+srv://pepe:pepe1234@cluster0.kiyax.mongodb.net/simple-locations-api?retryWrites=true&w=majority',)
+    MongooseModule.forRoot(process.env.MONGODB_URI)
   ],
   controllers: [AppController],
   providers: [AppService],
