@@ -3,6 +3,10 @@ import { Document } from 'mongoose';
 
 export type LocationDocument = Location & Document;
 
+interface Coordinate {
+  lat: number;
+  lng: number;
+}
 @Schema()
 export class Location {
   id: string
@@ -14,11 +18,11 @@ export class Location {
   address: string
 
   @Prop({ required: true })
-  location: [lat: number, lng: number]
+  coordinates: Coordinate
 
-  createdAt: Date;
+  createdAt: Date
 
-  updatedAt: Date;
+  updatedAt: Date
 }
 
 export const LocationSchema = SchemaFactory.createForClass(Location);

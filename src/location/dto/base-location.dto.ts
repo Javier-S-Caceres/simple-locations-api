@@ -2,7 +2,7 @@ export class BaseLocationDto {
   id: string
   alias: string
   address: string
-  location: {
+  coordinates: {
     lat: number
     lng: number
   }
