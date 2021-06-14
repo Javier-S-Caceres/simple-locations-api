@@ -14,7 +14,7 @@ export class Location {
   address: string
 
   @Prop({ required: true })
-  location: {lat: number, lng: number}
+  location: [lat: number, lng: number]
 
   createdAt: Date;
 
