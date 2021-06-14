@@ -7,9 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     LocationModule, 
-    MongooseModule.forRoot('mongodb://localhost/locations-nest-test', {
-      useNewUrlParser: true
-    })
+    MongooseModule.forRoot('mongodb+srv://pepe:pepe1234@cluster0.kiyax.mongodb.net/simple-locations-api?retryWrites=true&w=majority',)
   ],
   controllers: [AppController],
   providers: [AppService],
