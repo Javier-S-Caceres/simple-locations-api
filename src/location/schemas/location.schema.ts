@@ -9,22 +9,21 @@ interface Coordinate {
 }
 @Schema()
 export class Location {
-  id: string
 
   @Prop({ required: true })
-  alias: string
+  alias: string;
 
   @Prop({ required: true })
-  address: string
+  address: string;
 
   // @Prop({ required: true })
   // coordinates: Coordinate
   @Prop({ required: true })
-  coordinates: [lat: number, lng: number]
+  coordinates: [lat: number, lng: number];
 
-  createdAt: Date
+  createdAt: Date;
 
-  updatedAt: Date
+  updatedAt: Date;
 }
 
 export const LocationSchema = SchemaFactory.createForClass(Location);

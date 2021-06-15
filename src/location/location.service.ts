@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { CreateLocationDto } from './dto/create-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
 import { Location, LocationDocument } from './schemas/location.schema';
@@ -30,5 +30,22 @@ export class LocationService {
 
   async delete(id: string): Promise<Location> {
     return await this.model.findByIdAndDelete(id).exec();
+  }
+
+  async deleteMany(list: Array<string>): Promise<string> {
+    const session = await this.model.startSession();
+    try {
+      await session.withTransaction(async () => {
+        for (const element of list) {
+          this.delete(element);
+        }
+      });
+
+      await session.commitTransaction();
+      session.endSession();
+      return 'Success';
+    } catch (error) {
+      await session.abortTransaction();
+    }
   }
 }

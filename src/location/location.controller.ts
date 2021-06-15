@@ -39,4 +39,9 @@ export class LocationController {
   async delete(@Param('id') id: string) {
     return await this.service.delete(id);
   }
+
+  @Delete('/deleteMany')
+  async deleteMany(@Body() id: string) {
+    return await this.service.delete(id);
+  }
 }
