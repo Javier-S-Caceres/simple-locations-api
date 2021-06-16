@@ -3,10 +3,10 @@ import { Document } from 'mongoose';
 
 export type LocationDocument = Location & Document;
 
-interface Coordinate {
-  lat: number;
-  lng: number;
-}
+// interface Coordinate {
+//   lat: number;
+//   lng: number;
+// }
 @Schema()
 export class Location {
 
